@@ -1,9 +1,11 @@
 pipeline{
     agent any
     stages{
-        stage('github validation'){
+        stage('Github Checkout'){
           steps{
                  git url: 'https://github.com/Sapna35/addressbook-cicd-sapna'
+                branch: 'main'
+                credetialsId:'github-creds'
           }
         }
         stage('compiling the code'){
@@ -11,12 +13,12 @@ pipeline{
                  sh 'mvn compile'
           }
         }
-        stage('testing the code'){
+        stage('Run Tests'){
             steps{
                 sh 'mvn test'
             }
         }
-        stage('qa of the code'){
+        stage('QA'){
             steps{
                 sh 'mvn pmd:pmd'
             }
@@ -28,7 +30,7 @@ pipeline{
         }
         stage("deploy the project on tomcat"){
             steps{
-                sh "mv ${WORKSPACE}/target/addressbook.war /home/ubuntu/apache-tomcat-8.5.100/webapps/"
+                sh "sudo mv ${WORKSPACE}/target/addressbook.war /home/ubuntu/apache-tomcat-8.5.100/webapps/"
             }
         }
     }
