@@ -28,7 +28,7 @@ pipeline{
         }
         stage("deploy the project on tomcat"){
             steps{
-                sh "mv ${WORKSPACE}/target/addressbook.war /hom/ubuntu/apache-tomcat-8.5.100/webapps/"
+                sh "mv ${WORKSPACE}/target/addressbook.war /home/ubuntu/apache-tomcat-8.5.100/webapps/"
             }
         }
     }
