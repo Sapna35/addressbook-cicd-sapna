@@ -3,9 +3,8 @@ pipeline{
     stages{
         stage('Github Checkout'){
           steps{
-                 git url: 'https://github.com/Sapna35/addressbook-cicd-sapna'
-                branch: 'main'
-                credetialsId:'github-creds'
+                 git branch: 'main',
+                url:'https://github.com/Sapna35/addressbook-cicd-sapna'
           }
         }
         stage('compiling the code'){
