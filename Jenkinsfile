@@ -29,7 +29,7 @@ pipeline{
         }
         stage("deploy the project on tomcat"){
             steps{
-                sh "sudo mv ${WORKSPACE}/target/addressbook.war /home/ubuntu/apache-tomcat-8.5.100/webapps/"
+                sh "sudo mv ${WORKSPACE}/target/addressbook.war /home/ubuntu/appache-tomcat-8.5.100/webapps/"
             }
         }
     }
